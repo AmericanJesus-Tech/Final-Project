@@ -1,0 +1,137 @@
+{
+  "cart": [
+    {
+      "id": 0,
+      "productID": 2,
+      "amount": 4
+    },
+    {
+      "id": 1,
+      "productID": 1,
+      "amount": 1
+    },
+    {
+      "productID": 1,
+      "amount": 1,
+      "id": 2
+    },
+    {
+      "productID": 1,
+      "amount": 1,
+      "id": 3
+    },
+    {
+      "productID": 2,
+      "amount": 1,
+      "id": 4
+    },
+    {
+      "productID": 5,
+      "amount": 1,
+      "id": 5
+    },
+    {
+      "productID": 4,
+      "amount": 1,
+      "id": 6
+    },
+    {
+      "productID": 3,
+      "amount": 1,
+      "id": 7
+    },
+    {
+      "productID": 1,
+      "amount": 1,
+      "id": 8
+    },
+    {
+      "productID": 2,
+      "amount": 1,
+      "id": 9
+    },
+    {
+      "productID": 3,
+      "amount": 1,
+      "id": 10
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Chocolate Bar",
+      "brand": "Sweet Delights",
+      "price": 1.99,
+      "flavor": "Milk Chocolate",
+      "weight": "50g",
+      "ingredients": [
+        "Sugar",
+        "Cocoa Butter",
+        "Chocolate Liquor",
+        "Milk",
+        "Lecithin"
+      ],
+      "inStock": true
+    },
+    {
+      "id": 2,
+      "name": "Sour Gummies",
+      "brand": "Gummy World",
+      "price": 2.49,
+      "flavor": "Assorted",
+      "weight": "100g",
+      "ingredients": [
+        "Sugar",
+        "Corn Syrup",
+        "Citric Acid",
+        "Natural Flavors"
+      ],
+      "inStock": true
+    },
+    {
+      "id": 3,
+      "name": "Hard Candy",
+      "brand": "Classic Treats",
+      "price": 0.99,
+      "flavor": "Cherry",
+      "weight": "200g",
+      "ingredients": [
+        "Sugar",
+        "Corn Syrup",
+        "Natural Colors",
+        "Flavoring"
+      ],
+      "inStock": false
+    },
+    {
+      "id": 4,
+      "name": "Licorice Twists",
+      "brand": "Sweet Nibbles",
+      "price": 1.49,
+      "flavor": "Black Licorice",
+      "weight": "150g",
+      "ingredients": [
+        "Sugar",
+        "Molasses",
+        "Wheat Flour",
+        "Anise Oil"
+      ],
+      "inStock": true
+    },
+    {
+      "id": 5,
+      "name": "Chocolate-Covered Almonds",
+      "brand": "Nutty Delights",
+      "price": 3.99,
+      "flavor": "Chocolate",
+      "weight": "100g",
+      "ingredients": [
+        "Almonds",
+        "Sugar",
+        "Cocoa Powder",
+        "Palm Oil"
+      ],
+      "inStock": true
+    }
+  ]
+}
