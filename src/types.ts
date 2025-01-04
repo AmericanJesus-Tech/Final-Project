@@ -4,12 +4,12 @@ export type CartItem = {
     amount: number,
 }
 export type Product ={
-    "id": number,
+    "id"?: number,
     "name": string,
     "brand": string,
     "price": number,
-    "flavor": string,
-    "weight": string,
-    "ingredients": string[],
-    "inStock": boolean
+    "flavor"?: string,
+    "weight"?: string,
+    "ingredients"?: string[],
+    "inStock"?: boolean
   }

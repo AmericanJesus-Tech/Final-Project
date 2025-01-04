@@ -1,59 +1,26 @@
 {
   "cart": [
     {
-      "id": 0,
-      "productID": 2,
-      "amount": 4
-    },
-    {
-      "id": 1,
-      "productID": 1,
-      "amount": 1
+      "productID": 6,
+      "amount": 1,
+      "name": "Big Smoke",
+      "price": "7.99",
+      "id": 1
     },
     {
       "productID": 1,
       "amount": 1,
+      "name": "Chocolate Bar",
+      "price": 1.99,
+      "brand": "Sweet Delights",
       "id": 2
     },
     {
-      "productID": 1,
+      "productID": 6,
       "amount": 1,
+      "name": "Figglebottoms",
+      "price": 7.99,
       "id": 3
-    },
-    {
-      "productID": 2,
-      "amount": 1,
-      "id": 4
-    },
-    {
-      "productID": 5,
-      "amount": 1,
-      "id": 5
-    },
-    {
-      "productID": 4,
-      "amount": 1,
-      "id": 6
-    },
-    {
-      "productID": 3,
-      "amount": 1,
-      "id": 7
-    },
-    {
-      "productID": 1,
-      "amount": 1,
-      "id": 8
-    },
-    {
-      "productID": 2,
-      "amount": 1,
-      "id": 9
-    },
-    {
-      "productID": 3,
-      "amount": 1,
-      "id": 10
     }
   ],
   "products": [
@@ -132,6 +99,18 @@
         "Palm Oil"
       ],
       "inStock": true
+    },
+    {
+      "name": "Figglebottoms",
+      "price": 7.99,
+      "description": "Figs",
+      "id": 6
+    },
+    {
+      "name": "Big Smoke",
+      "price": 7.99,
+      "description": "Smonk",
+      "id": 7
     }
   ]
 }

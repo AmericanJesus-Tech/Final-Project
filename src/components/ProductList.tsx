@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { Product } from "../types"
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, useParams } from "react-router-dom"
 
 
 export const productListLoader = async () => {
@@ -16,13 +16,36 @@ export const productListLoader = async () => {
 
 export default function ProductList() {
     const products = useLoaderData() as Product[]
+    const [productsDelete, setProductsDelete] = useState<Product[]>([]);
     const [isAddingToCart, setIsAddingToCart] = useState(false)
     const [error, setError] = useState<null | string>(null)
+    const [cartItems, setCartItems] = useState<Product[]>([])
+    const { productId } = useParams()
 
-    const addToCart = async (productID: number) => {
+    // useEffect to get card items, and make the function to get cart items.
+    useEffect(() => {
+        fetchCartItems()
+    }, [])
+
+    const fetchCartItems = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/cart" + productId)
+            const data = await response.json()
+            setCartItems(data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
+    const addToCart = async (product: Product) => {
+        console.log("product id at add: ", product)
         const newCartItem = {
-            productID: productID,
-            amount: 1
+            productID: product.id,
+            amount: 1,
+            name: product.name,
+            price: product.price,
+            brand: product.brand
         }
         setIsAddingToCart(true)
         try {
@@ -33,15 +56,37 @@ export default function ProductList() {
                     "Content-Type": "application/json"
                 }
             })
+
             if (!response.ok) {
                 setError(response.statusText)
             }
         } catch (error: any) {
             setError(error.message)
         }
+        setCartItems([...cartItems, newCartItem])
         setIsAddingToCart(false)
 
     }
+
+    const handleDelete = async (productId: string) => {
+        try {
+            const response = await fetch(`http://localhost:3000/products/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            setProductsDelete(productsDelete.filter(product => product.id !== Number(productId)));
+            console.log('Delete Success');
+        } catch (error: any) {
+            setError(error.message);
+        }
+    };
 
     return (
         <>
@@ -57,10 +102,16 @@ export default function ProductList() {
                             <button
                                 className="btn btn-success"
                                 disabled={isAddingToCart}
-                                onClick={() => addToCart(product.id)}
+                                onClick={() => addToCart(product)}
                             >
                                 {isAddingToCart ? "Adding..." :
                                     "$" + product.price.toFixed(2)}
+                            </button>
+                            <button
+                                className="btn btn-danger"
+                                onClick={() => handleDelete(product.id?.toString() || '')}
+                            >
+                                Delete
                             </button>
                         </div>
                     </div>

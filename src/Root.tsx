@@ -13,6 +13,9 @@ export default function Root() {
         <li className="nav-item">
           <NavLink to="/cart" className="nav-link">Cart</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to="/form" className="nav-link">Form</NavLink>
+        </li>
       </ul>
       <Outlet/>
     </div>
