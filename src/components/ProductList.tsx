@@ -21,6 +21,8 @@ export default function ProductList() {
     const [error, setError] = useState<null | string>(null)
     const [cartItems, setCartItems] = useState<Product[]>([])
     const { productId } = useParams()
+    const [showEdit, setShowEdit] = useState(false)
+    const [editProduct, setEditProduct] = useState<Product | null>(null)
 
     // useEffect to get card items, and make the function to get cart items.
     useEffect(() => {
@@ -37,6 +39,25 @@ export default function ProductList() {
         }
     }
 
+    const fetchPut = async (product: Product) => {
+        try {
+            const response = await fetch(`http://localhost:3000/products/${product.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(product)
+            })
+            const data = await response.json()
+            console.log(data)
+        } catch (error) {
+            console.error('Error:', error)
+        }
+    }
+
+    const handleUpdate = (product: Product) => {
+        fetchPut(product)
+    }
 
     const addToCart = async (product: Product) => {
         console.log("product id at add: ", product)
@@ -87,6 +108,18 @@ export default function ProductList() {
             setError(error.message);
         }
     };
+    
+    const handleEditClick = (product: Product) => {
+        setEditProduct(product)
+        setShowEdit(true)
+    }
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (editProduct) {
+            const { name, value } = e.target
+            setEditProduct({ ...editProduct, [name]: name === 'price' ? Number(value) : value })
+        }
+    }
 
     return (
         <>
@@ -108,11 +141,41 @@ export default function ProductList() {
                                     "$" + product.price.toFixed(2)}
                             </button>
                             <button
+                                className="btn btn-primary"
+                                onClick={() => handleEditClick(product)}>Edit</button>
+                            <button
                                 className="btn btn-danger"
                                 onClick={() => handleDelete(product.id?.toString() || '')}
                             >
                                 Delete
                             </button>
+                            {showEdit && editProduct && editProduct.id === product.id && (
+                                <div>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={editProduct.name}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="brand"
+                                        value={editProduct.brand}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input
+                                        type="number"
+                                        name="price"
+                                        value={editProduct.price}
+                                        onChange={handleInputChange}
+                                    />
+                                    <button
+                                        onClick={() => handleUpdate(editProduct)}
+                                    >
+                                        Save
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}
