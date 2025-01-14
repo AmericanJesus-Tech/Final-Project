@@ -99,18 +99,6 @@
         "Palm Oil"
       ],
       "inStock": true
-    },
-    {
-      "name": "Figglebottoms",
-      "price": 7.99,
-      "description": "Figs",
-      "id": 6
-    },
-    {
-      "name": "Big Smoke",
-      "price": 7.99,
-      "description": "Smonk",
-      "id": 7
     }
   ]
 }
